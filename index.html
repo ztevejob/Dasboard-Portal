@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Dashboard & Tools</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        .portal-header {
+            background: linear-gradient(135deg, #0d6efd, #0dcaf0);
+            color: white;
+            padding: 40px 0;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .card-portal {
+            border: none;
+            border-radius: 12px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            background: #ffffff;
+            height: 100%;
+        }
+        .card-portal:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #0d6efd;
+        }
+        .btn-portal {
+            border-radius: 8px;
+            font-weight: 500;
+            padding: 10px 20px;
+        }
+        footer {
+            margin-top: 60px;
+            padding: 20px 0;
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Banner Portal -->
+    <div class="portal-header text-center">
+        <div class="container">
+            <h1 class="fw-bold mb-2"><i class="fa-solid fa-compass me-2"></i>Portal Dashboard & Tools</h1>
+            <p class="lead mb-0">Pusat akses cepat untuk seluruh dashboard dan pemadanan data.</p>
+        </div>
+    </div>
+
+    <!-- Main Content (Daftar Menu/Portal) -->
+    <div class="container">
+        <div class="row g-4">
+            
+            <!-- Card 1: Dashboard Information LOB Champion -->
+            <div class="col-md-4">
+                <div class="card card-portal p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="card-icon">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Dashboard Information LOB Champion</h4>
+                        <p class="text-muted">Akses informasi dan metrik terkait LOB Champion secara real-time.</p>
+                    </div>
+                    <div class="mt-4">
+                        <a href="https://ztevejob.github.io/LOB-Champion/" target="_blank" class="btn btn-primary btn-portal w-100">
+                            <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>Buka Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Pemadanan Data -->
+            <div class="col-md-4">
+                <div class="card card-portal p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="card-icon text-success">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Pemadanan Data</h4>
+                        <p class="text-muted">Pusat pemadanan data maptech untuk keperluan validasi dan pencocokan data.</p>
+                    </div>
+                    <div class="mt-4">
+                        <a href="https://ztevejob.github.io/Pemadanan-data-maptech/" target="_blank" class="btn btn-success btn-portal w-100">
+                            <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>Buka Pemadanan
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Dashboard OPS EMS PNR -->
+            <div class="col-md-4">
+                <div class="card card-portal p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="card-icon text-warning">
+                            <i class="fa-solid fa-gauge-high"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Dashboard OPS EMS PNR</h4>
+                        <p class="text-muted">Monitoring performa Store Trainer dan operasional EMS PNR.</p>
+                    </div>
+                    <div class="mt-4">
+                        <a href="https://dharmawangga29.github.io/Store-Trainer-Performance/" target="_blank" class="btn btn-warning btn-portal w-100 text-dark">
+                            <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>Buka Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Portal Internal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS (Opsional, untuk interaksi jika diperlukan) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
