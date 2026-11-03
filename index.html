@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Digimap Quick Access Portal</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -12,18 +12,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #0d6efd, #0dcaf0);
+        }
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f4f7f6;
             color: #333;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
+
+        /* --- DESKTOP VIEW STYLES (Default) --- */
         .portal-header {
-            background: linear-gradient(135deg, #0d6efd, #0dcaf0);
+            background: var(--primary-gradient);
             color: white;
             padding: 40px 0;
             margin-bottom: 40px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
+        .desktop-view {
+            display: block;
+        }
+        .mobile-view {
+            display: none;
+        }
+
         .card-portal {
             border: none;
             border-radius: 12px;
@@ -46,156 +64,357 @@
             font-weight: 500;
             padding: 10px 20px;
         }
+
         footer {
             margin-top: 60px;
             padding: 20px 0;
             text-align: center;
             color: #6c757d;
             font-size: 0.9rem;
+            border-top: 1px solid #e2e8f0;
+            background: #ffffff;
         }
-        .credential-box {
-            background-color: #f8f9fa;
-            border-left: 3px solid #ffc107;
-            padding: 8px 12px;
-            font-size: 0.85rem;
-            border-radius: 4px;
-            margin-top: 10px;
+
+        /* --- MOBILE VIEW STYLES (iPhone & Android Media Query) --- */
+        @media (max-width: 767.98px) {
+            .desktop-view {
+                display: none !important;
+            }
+            .mobile-view {
+                display: block !important;
+            }
+            body {
+                background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+                color: #f8fafc;
+            }
+            .mobile-header {
+                text-align: center;
+                padding: 24px 16px 16px 16px;
+            }
+            .mobile-header h1 {
+                font-size: 1.35rem;
+                font-weight: 700;
+                color: #ffffff;
+                margin-bottom: 4px;
+            }
+            .mobile-header p {
+                font-size: 0.8rem;
+                color: #94a3b8;
+                margin: 0;
+            }
+            .app-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 18px 10px;
+                padding: 10px 16px;
+                max-width: 480px;
+                margin: 0 auto;
+            }
+            .app-item {
+                text-decoration: none;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                transition: transform 0.15s ease;
+            }
+            .app-item:active {
+                transform: scale(0.92);
+            }
+            .app-icon-wrapper {
+                width: 64px;
+                height: 64px;
+                border-radius: 18px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.65rem;
+                color: white;
+                box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+                margin-bottom: 6px;
+                background: #ffffff;
+            }
+            .app-label {
+                font-size: 0.72rem;
+                font-weight: 500;
+                color: #e2e8f0;
+                line-height: 1.2;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 76px;
+            }
+            footer {
+                background: transparent;
+                border-top: none;
+                color: #64748b;
+                font-size: 0.75rem;
+                margin-top: 30px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header / Banner Portal -->
-    <div class="portal-header text-center">
+    <!-- ========================================== -->
+    <!-- DESKTOP VIEW (Tampilan Kartu Penuh)         -->
+    <!-- ========================================== -->
+    <div class="desktop-view w-100">
+        <!-- Header / Banner Portal -->
+        <div class="portal-header text-center">
+            <div class="container">
+                <h1 class="fw-bold mb-2"><i class="fa-solid fa-compass me-2"></i>Digimap Quick Access Portal</h1>
+                <p class="lead mb-0">Direktori tautan terpadu untuk monitoring training dan assessment sales.</p>
+            </div>
+        </div>
+
+        <!-- Main Content Desktop -->
         <div class="container">
-            <h1 class="fw-bold mb-2"><i class="fa-solid fa-compass me-2"></i>Digimap Quick Access Portal</h1>
-            <p class="lead mb-0">Direktori tautan terpadu untuk monitoring training dan assessment sales.</p>
+            <div class="row g-4">
+                
+                <!-- 1. LOB Champion -->
+                <div class="col-md-4">
+                    <div class="card card-portal p-4 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+                            <h4 class="fw-bold mb-3">Dashboard Information LOB Champion</h4>
+                            <p class="text-muted">Akses informasi dan metrik terkait LOB Champion secara real-time.</p>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://ztevejob.github.io/LOB-Champion/" target="_blank" class="btn btn-primary btn-portal w-100">
+                                <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>Buka Dashboard
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Pemadanan Data -->
+                <div class="col-md-4">
+                    <div class="card card-portal p-4 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="card-icon text-success"><i class="fa-solid fa-database"></i></div>
+                            <h4 class="fw-bold mb-3">Pemadanan Data</h4>
+                            <p class="text-muted">Pusat pemadanan data maptech untuk keperluan validasi dan pencocokan data.</p>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://ztevejob.github.io/Pemadanan-data-maptech/" target="_blank" class="btn btn-success btn-portal w-100">
+                                <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>Buka Pemadanan
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Activity Performance Hub -->
+                <div class="col-md-4">
+                    <div class="card card-portal p-4 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="card-icon text-warning"><i class="fa-solid fa-gauge-high"></i></div>
+                            <h4 class="fw-bold mb-3">Activity Performance Hub</h4>
+                            <p class="text-muted">Pusat monitoring performa aktivitas dan pelaporan trainer.</p>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://activity-performance-hub.vercel.app/" target="_blank" class="btn btn-warning btn-portal w-100 text-dark">
+                                <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>Buka Hub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Monitoring Sales Coach Monthly Task -->
+                <div class="col-md-4">
+                    <div class="card card-portal p-4 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="card-icon" style="color: #e83e8c;"><i class="fa-solid fa-list-check"></i></div>
+                            <h4 class="fw-bold mb-3">Monitoring Sales Coach Monthly Task</h4>
+                            <p class="text-muted">Pusat pemantauan dan pengumpulan tugas bulanan untuk tim Sales Coach.</p>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://ztevejob.github.io/Sales-Coach-Submit/" target="_blank" class="btn btn-portal w-100 text-white" style="background-color: #e83e8c;">
+                                <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>Buka Monitoring
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Data Toko Belum Ada Store Trainer -->
+                <div class="col-md-4">
+                    <div class="card card-portal p-4 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="card-icon text-info"><i class="fa-solid fa-store-slash"></i></div>
+                            <h4 class="fw-bold mb-3">Data Toko Belum Ada Store Trainer</h4>
+                            <p class="text-muted">Daftar toko dan lokasi yang belum memiliki penugasan Store Trainer.</p>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://www.icloud.com/numbers/097FMIYLSslI_FUEs7wZ-PepA#List_Store_Trainer_Digimap" target="_blank" class="btn btn-info btn-portal w-100 text-white">
+                                <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>Buka Data Toko
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Hasil Survey Trainer -->
+                <div class="col-md-4">
+                    <div class="card card-portal p-4 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="card-icon text-danger"><i class="fa-solid fa-clipboard-question"></i></div>
+                            <h4 class="fw-bold mb-3">Hasil Survey Trainer</h4>
+                            <p class="text-muted">Rekap kepuasan peserta per trainer dan topik materi pelatihan.</p>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://claude.ai/public/artifacts/7d34b40d-ec48-4732-b723-c54093516309" target="_blank" class="btn btn-danger btn-portal w-100">
+                                <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>Buka Hasil Survey
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Digimap Sales Staff Assessment -->
+                <div class="col-md-4">
+                    <div class="card card-portal p-4 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="card-icon" style="color: #6f42c1;"><i class="fa-solid fa-user-check"></i></div>
+                            <h4 class="fw-bold mb-3">Digimap Sales Staff Assessment</h4>
+                            <p class="text-muted">Pusat pelaksanaan evaluasi dan assessment performa kompetensi sales staff.</p>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://ztevejob.github.io/SA-Assesment/" target="_blank" class="btn btn-portal w-100 text-white" style="background-color: #6f42c1;">
+                                <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>Mulai Assessment
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Meeting Tim ABAS -->
+                <div class="col-md-4">
+                    <div class="card card-portal p-4 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="card-icon" style="color: #0078d4;"><i class="fa-solid fa-video"></i></div>
+                            <h4 class="fw-bold mb-3">Meeting Tim ABAS</h4>
+                            <p class="text-muted">Tautan akses Microsoft Teams untuk koordinasi dan meeting berkala tim ABAS.</p>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://teams.microsoft.com/meet/497591426571?p=VUGBpu" target="_blank" class="btn btn-portal w-100 text-white" style="background-color: #0078d4;">
+                                <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>Join Meeting Teams
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. Hapus Akun Sales Coach -->
+                <div class="col-md-4">
+                    <div class="card card-portal p-4 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="card-icon text-secondary"><i class="fa-solid fa-user-slash"></i></div>
+                            <h4 class="fw-bold mb-3">Hapus Akun Sales Coach</h4>
+                            <p class="text-muted">Portal Apple MyAccess untuk pengelolaan dan penghapusan akun tim Sales Coach.</p>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://myaccess.apple.com/ur/portal/index.html#/my-team/users" target="_blank" class="btn btn-secondary btn-portal w-100 text-white">
+                                <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>Akses MyAccess
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 
-    <!-- Main Content (Daftar Menu/Portal) -->
-    <div class="container">
-        <div class="row g-4">
+
+    <!-- ========================================== -->
+    <!-- MOBILE VIEW (Tampilan Ikon Ala Launcher)    -->
+    <!-- ========================================== -->
+    <div class="mobile-view w-100">
+        <!-- Header Mobile -->
+        <div class="mobile-header">
+            <h1><i class="fa-solid fa-compass me-2 text-info"></i>Digimap Launcher</h1>
+            <p>Akses cepat alat operasional & training</p>
+        </div>
+
+        <!-- Grid Ikon Aplikasi -->
+        <div class="app-grid">
             
-            <!-- Card 1: Dashboard Information LOB Champion -->
-            <div class="col-md-4">
-                <div class="card card-portal p-4 d-flex flex-column justify-content-between">
-                    <div>
-                        <div class="card-icon">
-                            <i class="fa-solid fa-chart-line"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Dashboard Information LOB Champion</h4>
-                        <p class="text-muted">Akses informasi dan metrik terkait LOB Champion secara real-time.</p>
-                    </div>
-                    <div class="mt-4">
-                        <a href="https://ztevejob.github.io/LOB-Champion/" target="_blank" class="btn btn-primary btn-portal w-100">
-                            <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>Buka Dashboard
-                        </a>
-                    </div>
+            <!-- 1. LOB Champion -->
+            <a href="https://ztevejob.github.io/LOB-Champion/" target="_blank" class="app-item">
+                <div class="app-icon-wrapper" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">
+                    <i class="fa-solid fa-chart-line"></i>
                 </div>
-            </div>
+                <span class="app-label">LOB Champion</span>
+            </a>
 
-            <!-- Card 2: Pemadanan Data -->
-            <div class="col-md-4">
-                <div class="card card-portal p-4 d-flex flex-column justify-content-between">
-                    <div>
-                        <div class="card-icon text-success">
-                            <i class="fa-solid fa-database"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Pemadanan Data</h4>
-                        <p class="text-muted">Pusat pemadanan data maptech untuk keperluan validasi dan pencocokan data.</p>
-                    </div>
-                    <div class="mt-4">
-                        <a href="https://ztevejob.github.io/Pemadanan-data-maptech/" target="_blank" class="btn btn-success btn-portal w-100">
-                            <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>Buka Pemadanan
-                        </a>
-                    </div>
+            <!-- 2. Pemadanan Data -->
+            <a href="https://ztevejob.github.io/Pemadanan-data-maptech/" target="_blank" class="app-item">
+                <div class="app-icon-wrapper" style="background: linear-gradient(135deg, #10b981, #047857);">
+                    <i class="fa-solid fa-database"></i>
                 </div>
-            </div>
+                <span class="app-label">Pemadanan Data</span>
+            </a>
 
-            <!-- Card 3: Activity Performance Hub (Baru) -->
-            <div class="col-md-4">
-                <div class="card card-portal p-4 d-flex flex-column justify-content-between">
-                    <div>
-                        <div class="card-icon text-warning">
-                            <i class="fa-solid fa-gauge-high"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Activity Performance Hub</h4>
-                        <p class="text-muted mb-2">Pusat monitoring performa aktivitas dan pelaporan trainer.</p>
-                        <div class="credential-box text-muted">
-                            <div><strong>Password Trainer HO:</strong> Trainerhebat</div>
-                            <div><strong>Password Store Trainer:</strong> NIK masing-masing</div>
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <a href="https://activity-performance-hub.vercel.app/" target="_blank" class="btn btn-warning btn-portal w-100 text-dark">
-                            <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>Buka Hub
-                        </a>
-                    </div>
+            <!-- 3. Activity Performance Hub -->
+            <a href="https://activity-performance-hub.vercel.app/" target="_blank" class="app-item">
+                <div class="app-icon-wrapper" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                    <i class="fa-solid fa-gauge-high"></i>
                 </div>
-            </div>
+                <span class="app-label">Activity Hub</span>
+            </a>
 
-            <!-- Card 4: Data Toko Belum Ada Store Trainer -->
-            <div class="col-md-4">
-                <div class="card card-portal p-4 d-flex flex-column justify-content-between">
-                    <div>
-                        <div class="card-icon text-info">
-                            <i class="fa-solid fa-store-slash"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Data Toko Belum Ada Store Trainer</h4>
-                        <p class="text-muted">Daftar toko dan lokasi yang belum memiliki penugasan Store Trainer.</p>
-                    </div>
-                    <div class="mt-4">
-                        <a href="https://www.icloud.com/numbers/097FMIYLSslI_FUEs7wZ-PepA#List_Store_Trainer_Digimap" target="_blank" class="btn btn-info btn-portal w-100 text-white">
-                            <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>Buka Data Toko
-                        </a>
-                    </div>
+            <!-- 4. Monitoring Sales Coach Task -->
+            <a href="https://ztevejob.github.io/Sales-Coach-Submit/" target="_blank" class="app-item">
+                <div class="app-icon-wrapper" style="background: linear-gradient(135deg, #ec4899, #be185d);">
+                    <i class="fa-solid fa-list-check"></i>
                 </div>
-            </div>
+                <span class="app-label">Coach Task</span>
+            </a>
 
-            <!-- Card 5: Hasil Survey Trainer -->
-            <div class="col-md-4">
-                <div class="card card-portal p-4 d-flex flex-column justify-content-between">
-                    <div>
-                        <div class="card-icon text-danger">
-                            <i class="fa-solid fa-clipboard-question"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Hasil Survey Trainer</h4>
-                        <p class="text-muted">Rekap kepuasan peserta per trainer dan topik materi pelatihan.</p>
-                    </div>
-                    <div class="mt-4">
-                        <a href="https://claude.ai/public/artifacts/7d34b40d-ec48-4732-b723-c54093516309" target="_blank" class="btn btn-danger btn-portal w-100">
-                            <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>Buka Hasil Survey
-                        </a>
-                    </div>
+            <!-- 5. Data Toko Tanpa Trainer -->
+            <a href="https://www.icloud.com/numbers/097FMIYLSslI_FUEs7wZ-PepA#List_Store_Trainer_Digimap" target="_blank" class="app-item">
+                <div class="app-icon-wrapper" style="background: linear-gradient(135deg, #06b6d4, #0e7490);">
+                    <i class="fa-solid fa-store-slash"></i>
                 </div>
-            </div>
+                <span class="app-label">List Toko Kosong</span>
+            </a>
 
-            <!-- Card 6: Digimap Sales Staff Assessment -->
-            <div class="col-md-4">
-                <div class="card card-portal p-4 d-flex flex-column justify-content-between">
-                    <div>
-                        <div class="card-icon" style="color: #6f42c1;">
-                            <i class="fa-solid fa-user-check"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Digimap Sales Staff Assessment</h4>
-                        <p class="text-muted">Pusat pelaksanaan evaluasi dan assessment performa kompetensi sales staff.</p>
-                    </div>
-                    <div class="mt-4">
-                        <a href="https://ztevejob.github.io/SA-Assesment/" target="_blank" class="btn btn-portal w-100 text-white" style="background-color: #6f42c1;">
-                            <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>Mulai Assessment
-                        </a>
-                    </div>
+            <!-- 6. Hasil Survey Trainer -->
+            <a href="https://claude.ai/public/artifacts/7d34b40d-ec48-4732-b723-c54093516309" target="_blank" class="app-item">
+                <div class="app-icon-wrapper" style="background: linear-gradient(135deg, #ef4444, #b91c1c);">
+                    <i class="fa-solid fa-clipboard-question"></i>
                 </div>
-            </div>
+                <span class="app-label">Survey Trainer</span>
+            </a>
+
+            <!-- 7. Sales Staff Assessment -->
+            <a href="https://ztevejob.github.io/SA-Assesment/" target="_blank" class="app-item">
+                <div class="app-icon-wrapper" style="background: linear-gradient(135deg, #8b5cf6, #6d28d9);">
+                    <i class="fa-solid fa-user-check"></i>
+                </div>
+                <span class="app-label">SA Assessment</span>
+            </a>
+
+            <!-- 8. Meeting Tim ABAS -->
+            <a href="https://teams.microsoft.com/meet/497591426571?p=VUGBpu" target="_blank" class="app-item">
+                <div class="app-icon-wrapper" style="background: linear-gradient(135deg, #2563eb, #1e40af);">
+                    <i class="fa-solid fa-video"></i>
+                </div>
+                <span class="app-label">Meeting ABAS</span>
+            </a>
+
+            <!-- 9. Hapus Akun Sales Coach -->
+            <a href="https://myaccess.apple.com/ur/portal/index.html#/my-team/users" target="_blank" class="app-item">
+                <div class="app-icon-wrapper" style="background: linear-gradient(135deg, #64748b, #475569);">
+                    <i class="fa-solid fa-user-slash"></i>
+                </div>
+                <span class="app-label">Hapus Akun Coach</span>
+            </a>
 
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Footer Umum -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 Digimap Quick Access Portal. All rights reserved.</p>
+            <p class="mb-0">&copy; 2026 Digimap Quick Access Portal. All rights reserved.</p>
         </div>
     </footer>
 
